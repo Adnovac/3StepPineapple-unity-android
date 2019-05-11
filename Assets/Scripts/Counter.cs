@@ -12,9 +12,8 @@ public class Counter : MonoBehaviour
     public void Step()
     {
         steps++;
-        if(steps==3 && ThirdStepEvent!=null)
+        if(steps%3==0 && ThirdStepEvent!=null)
         {
-            steps = 0;
             ThirdStepEvent.Invoke();
         }
         TextMeshProUGUI text = gameObject.GetComponent<TextMeshProUGUI>();

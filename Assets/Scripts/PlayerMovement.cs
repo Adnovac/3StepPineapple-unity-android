@@ -42,16 +42,8 @@ public class PlayerMovement : MonoBehaviour
         {
             audioSource.clip = goal;
             audioSource.Play();
-            try
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            catch
-            {
-                SceneManager.LoadScene(0);
-            }
-            transform.position = transform.position + vector;
-            return;
+            StartCoroutine(Waiter(1));
+          
         }
         foreach (DoorScript door in doors)
         {
@@ -72,6 +64,16 @@ public class PlayerMovement : MonoBehaviour
         lastPosition = transform.position;
         transform.position = transform.position + vector;
         stepCounter.Step();
+    }
+
+    IEnumerator Waiter(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else
+            SceneManager.LoadScene(0);
+
     }
 }
 
