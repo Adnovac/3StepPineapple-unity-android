@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public Tilemap tilemap;
     public RuleTile wall;
     public Tile flag;
-    public GameObject stepCounterObject;
     List<DoorScript> doors = new List<DoorScript>();
     Vector3 lastPosition;
     AudioSource audioSource;
@@ -19,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        stepCounter = (Counter)stepCounterObject.GetComponent(typeof(Counter));
+        stepCounter  = FindObjectOfType<Counter>();
         doors = FindObjectsOfType<DoorScript>().ToList();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -40,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (tile == flag)
         {
+            SaveStepsTaken();
             audioSource.clip = goal;
             audioSource.Play();
             StartCoroutine(Waiter(1));
@@ -70,10 +70,18 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         if (SceneManager.GetActiveScene().buildIndex != SceneManager.sceneCountInBuildSettings - 1)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        else
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("LevelSelector");
 
+    }
+
+    void SaveStepsTaken()
+    {
+        string levelName = SceneManager.GetActiveScene().name;
+        int stepsPrevious = PlayerPrefs.GetInt($"{levelName}Steps");
+        if (stepCounter.Steps < stepsPrevious || stepsPrevious == 0)
+            PlayerPrefs.SetInt($"{levelName}Steps", stepCounter.Steps);
+        int levelNumber = System.Int32.Parse(levelName.Substring(levelName.LastIndexOf('l') + 1));
+        PlayerPrefs.SetInt("LastLevelSaved", levelNumber);
     }
 }
 

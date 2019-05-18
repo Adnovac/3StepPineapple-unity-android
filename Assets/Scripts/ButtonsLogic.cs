@@ -39,14 +39,21 @@ public class ButtonsLogic : MonoBehaviour
     
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        SceneManager.LoadScene("LevelSelector");
     }
-
+    public void HowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
     // Update is called once per frame
     void Update()
     {

@@ -12,7 +12,6 @@ public class DoorScript : MonoBehaviour
     public Sprite closed2;
     public RuleTile wall;
     Tilemap tileMap;
-    public GameObject StepCounter;
     public bool isOpened;
     Counter counter;
     AudioSource audioSource;
@@ -23,10 +22,11 @@ public class DoorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         tileMap = GameObject.FindGameObjectWithTag("LevelTileMap").GetComponent<Tilemap>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         audioSource = gameObject.GetComponent<AudioSource>();
-        counter = (Counter)StepCounter.GetComponent(typeof(Counter));
+        counter = FindObjectOfType<Counter>();
         Vector3 upPosition = transform.position + Vector3.up;
         Vector3 downPosition = transform.position + Vector3.down;
         Vector3Int cell = tileMap.WorldToCell(upPosition);

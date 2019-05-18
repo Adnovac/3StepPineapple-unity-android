@@ -19,7 +19,13 @@ public class Counter : MonoBehaviour
         TextMeshProUGUI text = gameObject.GetComponent<TextMeshProUGUI>();
         text.text = "Steps: " + steps;
     }
-
+    public int Steps
+    {
+        get
+        {
+            return steps;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
