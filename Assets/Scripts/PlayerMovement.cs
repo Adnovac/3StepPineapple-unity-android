@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         string levelName = SceneManager.GetActiveScene().name;
         int stepsPrevious = PlayerPrefs.GetInt($"{levelName}Steps");
         if (stepCounter.Steps < stepsPrevious || stepsPrevious == 0)
-            PlayerPrefs.SetInt($"{levelName}Steps", stepCounter.Steps);
+            PlayerPrefs.SetInt($"{levelName}Steps", stepCounter.Steps+1);
         int levelNumber = System.Int32.Parse(levelName.Substring(levelName.LastIndexOf('l') + 1));
         PlayerPrefs.SetInt("LastLevelSaved", levelNumber);
     }

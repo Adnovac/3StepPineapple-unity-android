@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0, y: 340}
   m_SizeDelta: {x: 1200, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164382404
@@ -171,7 +171,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Every third step you take doors change thier state. Try to reach the flag
     in as few steps as possible. You cannot undo your moves!\n\n-You\n   \n -Flag\n\n
-    \  -Doors\n\nIf you're stuck hit the Reset button!"
+    \  -Doors\n\nYou can step on opened doors in your third step.\nIf you're stuck
+    hit the Reset button!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -240,12 +241,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 164382404}
-    characterCount: 197
+    characterCount: 246
     spriteCount: 0
-    spaceCount: 45
-    wordCount: 35
+    spaceCount: 55
+    wordCount: 45
     linkCount: 0
-    lineCount: 10
+    lineCount: 11
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
